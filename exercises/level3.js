@@ -39,7 +39,11 @@ const exampleProductArray = [
  * @returns {number}
  */
 function level3exercise1(products) {
-
+  let sumPrices = 0;
+  for(obj of products){
+    sumPrices += obj.price;
+  }
+  return sumPrices;
 }
 
 /**
@@ -49,8 +53,18 @@ function level3exercise1(products) {
  * @returns {string}
  */
 function level3exercise2(products) {
-
+  let highPrice = 0;
+  let product = "";
+  for(obj of products){
+    
+    if(highPrice < obj.price){
+      highPrice = obj.price;
+      product = obj.name;
+    }
+  }
+  return product;
 }
+
 
 /**
  * Lowest priced product
@@ -59,7 +73,15 @@ function level3exercise2(products) {
  * @returns {Product}
  */
 function level3exercise3(products) {
-
+  let lowPrice = 9999999999;
+  let product = "";
+  for(obj of products){
+    if(lowPrice > obj.price){
+      lowPrice = obj.price;
+      product = obj.name;
+    }
+  }
+  return product;
 }
 
 /**
@@ -69,7 +91,7 @@ function level3exercise3(products) {
  * @returns {number}
  */
 function level3exercise4(products) {
-
+  return (level3exercise1(products) / products.length)
 }
 
 /**
@@ -80,7 +102,14 @@ function level3exercise4(products) {
  * @returns {string}
  */
 function level3exercise5(products) {
-
+  let productName = level3exercise3(products);
+  let productPrice = 0;
+  for(obj of products){
+    if(obj.name === productName){
+      productPrice = obj.price;
+    }
+  }
+  return `${productName}: $${productPrice}`;
 }
 
 /**
@@ -90,7 +119,13 @@ function level3exercise5(products) {
  * @returns {Product[]}
  */
 function level3exercise6(products) {
-
+  let productsInStock = [];
+  for(obj of products){
+    if (obj.stock > 0){
+      productsInStock.push(obj);
+    }
+  }
+  return productsInStock;
 }
 
 /**
@@ -101,7 +136,13 @@ function level3exercise6(products) {
  * @returns {Product[]}
  */
 function level3exercise7(products, color) {
-
+  let productsWithColor = [];
+  for(obj of products){
+    if (color === obj.color){
+      productsWithColor.push(obj);
+    }
+  }
+  return productsWithColor;
 }
 
 /**
@@ -112,5 +153,9 @@ function level3exercise7(products, color) {
  * @returns {string}
  */
 function level3exercise8(products) {
-
+  let string = [];
+  for(obj of products){
+    string.push(`${obj.name}: $${obj.price}`);
+  }
+  return string;
 }
